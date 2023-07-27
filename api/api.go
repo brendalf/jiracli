@@ -11,9 +11,8 @@ import (
 // Jira configuration - Replace with your own Jira credentials and URL
 const (
     jiraProject = ""
-	jiraURL = ""
-	jiraUsername = ""
-	jiraToken = ""
+    jiraURL = ""
+    jiraToken = ""
 )
 
 type Issue struct {
@@ -32,7 +31,7 @@ type Assignee struct {
 func ListTickets() {
 	url := fmt.Sprintf("%s/rest/api/2/search", jiraURL)
 
-    query := fmt.Sprintf("project = '%v' AND status != Closed ORDER BY created DESC", jiraProject)
+	query := fmt.Sprintf("project = '%v' AND status != Closed ORDER BY created DESC", jiraProject)
 	payload := []byte(`{"jql":"` + query + `"}`)
 
 	response, err := sendRequest("POST", url, payload)
@@ -83,8 +82,7 @@ func sendRequest(method, url string, payload []byte) ([]byte, error) {
 	}
 
 	// Basic authentication using username and password
-	// auth := base64.StdEncoding.EncodeToString([]byte(jiraUsername + ":" + jiraPassword))
-	req.Header.Add("Authorization", "Bearer "+jiraToken)
+	req.Header.Add("Authorization", "Bearer " + jiraToken)
 	req.Header.Add("Content-Type", "application/json")
 
 	resp, err := client.Do(req)
