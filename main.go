@@ -1,22 +1,18 @@
-/*
-Copyright © 2023 NAME HERE <EMAIL ADDRESS>
-
-*/
 package main
 
 import (
-    "os"
-    "fmt"
-    "jira/cmd"
+	"fmt"
+	"jira/cmd"
+	"os"
 )
 
 func main() {
-    var cmd, error = cmd.CreateRootCommand()
+	var cmd, error = cmd.CreateRootCommand()
 
-    if error != nil {
-        fmt.Println("Failed to create root command")
-        os.Exit(1)
-    }
+	if error != nil {
+		fmt.Println("Failed to create root command")
+		os.Exit(1)
+	}
 
-    cmd.Execute()
+	cmd.Execute()
 }

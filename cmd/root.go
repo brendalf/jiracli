@@ -4,6 +4,7 @@ Copyright © 2023 NAME HERE <EMAIL ADDRESS>
 package cmd
 
 import (
+    authCmd "jira/cmd/auth"
 	"github.com/MakeNowJust/heredoc"
 	"github.com/spf13/cobra"
 )
@@ -23,8 +24,12 @@ func CreateRootCommand() (*cobra.Command, error) {
 
     rootCmd.PersistentFlags().Bool("help", false, "Show help for command")
 
+    rootCmd.AddCommand(authCmd.CreateAuthCommand())
+
     rootCmd.AddCommand(CreateListCommand())
     rootCmd.AddCommand(CreateViewCommand())
+
+    rootCmd.AddCommand(CreateVersionCommand())
 
     return rootCmd, nil
 }
